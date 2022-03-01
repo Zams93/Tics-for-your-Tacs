@@ -3,7 +3,7 @@ body {
   }
   
   header {
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
     background-color: #4a4e69;
   }
@@ -15,7 +15,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, auto);
     width: 306px;
-    margin: 250px auto;
+    margin: 180px auto;
     padding-right: 250px;
   }
   .cell {
@@ -25,4 +25,18 @@ body {
     box-shadow: 0 0 0 2px #333333;
     border: 3px solid #333333;
     line-height: 100px;
+    cursor: pointer;
+  }
+
+  button {
+    font-size: 25px;
+    position: relative;
+    background-color: #4a4e69;
+    margin-left: 50%;
+  }
+
+  footer {
+    font-size: 20px;
+    text-align: center;
+    background-color: #4a4e69;
   }
