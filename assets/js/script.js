@@ -28,24 +28,31 @@ function onCellClick(event) {
   // adding the tic or toe to cell
   event.target.innerHTML = playersTurn;
 
+  const cellIndex = event.target.getAttribute("data-cell-index");
+
   // ============
   // change players
   if (playersTurn === "X") {
     playersTurn = "O";
+    gameSetup[cellIndex] = "X";
   } else {
     playersTurn = "X";
+    gameSetup[cellIndex] = "O";
   }
   // ============
   // check game result
 
-  const hasGameFinished = checkForWin(); // return true  game is finished there is a winner /// return false game is not finihed and keep playing
-
-  if (hasGameFinished) {
-    alert(" Player Has Won");
+  const win = checkForWin(); // return true  game is finished there is a winner /// return false game is not finihed and keep playing
+  if (win) {
+    resetGame();
+  } else {
+    checkForDraw();
   }
 
   // ============
 }
+
+document.querySelectorAll("button")[0].addEventListener("click", resetGame);
 
 const listOfCells = document.querySelectorAll(".cell"); // returns array set each ndoes innner html to null or empty string
 for (let i = 0; i < listOfCells.length; i++) {
@@ -54,7 +61,12 @@ for (let i = 0; i < listOfCells.length; i++) {
 
 function resetGame() {
   // reset game with out refreshing page.
+  playersTurn = "X";
+  gameSetup = ["", "", "", "", "", "", "", "", ""];
   const listOfCells = document.querySelectorAll(".cell");
+  for (let i = 0; i < listOfCells.length; i++) {
+    listOfCells[i].innerHTML = "";
+  }
 }
 // returns array set each ndoes innner html to null or empty string
 // nedd to loop
@@ -70,7 +82,16 @@ const winningTableScores = [
   [2, 4, 6],
 ];
 
+function checkForDraw() {
+  let gameDraw = !gameSetup.includes("");
+  if (gameDraw) {
+    alert("This game is a draw! Everybody is a winner :D");
+    resetGame();
+  }
+}
+
 function checkForWin() {
+  const allCellsAreFilled = checkForDraw();
   const listOfCells = document.querySelectorAll(".cell");
 
   for (let i = 0; i < winningTableScores.length; i++) {
@@ -84,12 +105,12 @@ function checkForWin() {
     const b = listOfCells[cell2].innerHTML;
     const c = listOfCells[cell3].innerHTML;
 
-    const allCellsAreFilled = a && b && c;
+    const allRowsAreFilled = a && b && c;
     const isWinningMove = a == b && b == c && a == c;
 
-    if (allCellsAreFilled && isWinningMove) {
+    if (allRowsAreFilled && isWinningMove) {
       alert("there is a win" + "Player " + a + " Has Won");
-      resetGame();
+      return true;
     }
   }
 }

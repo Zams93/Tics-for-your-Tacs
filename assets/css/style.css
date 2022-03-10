@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
+html {
+  font-size: 22px;
+}
 
 body {
   background-color: #3d5a80;
@@ -6,41 +9,85 @@ body {
 }
 
 header {
-  font-size: 20px;
   text-align: center;
   background-color: #4a4e69;
+  margin-bottom: 5rem;
 }
 
 section {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
 }
+
+h1,
+h2 {
+  font-size: 1.8rem;
+}
+
 .game--container {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  width: 306px;
-  margin: 180px auto;
-  padding-right: 250px;
-  font-size: 150px;
+  margin-bottom: 2rem;
 }
 .cell {
   background-color: #84a59d;
-  width: 200px;
-  height: 200px;
+  width: 10rem;
+  height: 10rem;
   box-shadow: 0 0 0 2px #333333;
   border: 3px solid #333333;
-  line-height: 100px;
+  line-height: 1;
   cursor: pointer;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-size: 5rem;
 }
 
 button {
   font-size: 25px;
-  position: relative;
   background-color: #4a4e69;
-  margin-left: 50%;
 }
 
 footer {
-  font-size: 20px;
   text-align: center;
   background-color: #4a4e69;
+}
+
+@media screen and (max-width: 1280px) {
+  html {
+    font-size: 15px;
+  }
+  h1,
+  h2 {
+    font-size: 1.5rem;
+  }
+  header,
+  section,
+  .game--container {
+    margin-bottom: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 10px;
+  }
+  h1,
+  h2 {
+    font-size: 2rem;
+  }
+  header,
+  section,
+  .game--container {
+    margin-bottom: 1rem;
+  }
+  body {
+    font-size: 1.3rem;
+  }
 }
