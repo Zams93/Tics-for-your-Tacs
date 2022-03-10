@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * Need a toggle that tells you that you have started the game.
  * Need a toggle that tells you whose turn it is.
  * Need to listen for clicks.
@@ -7,62 +7,89 @@
  * After move finished switch player.
  */
 
-let startedGame = false
+// on click we change the cell to the players tic
+// change players tic
 
-let playersTurn = "X"
-if (playersTurn === "X"){
-  document.getElementsByClassName("cell").innerHTML = "X";
-  playersTurn = 0;
-} else {
-  document.getElementsByClassName("cell").innerHTML = "O";
-  playersTurn = 1;
-}
+let startedGame = false;
 
+let playersTurn = "X"; // tracker players turn tracker // X O X O X O X O X O
 
-let gameSetup = ["", "", "", "", "", "", "", "", "",];
+let gameSetup = ["", "", "", "", "", "", "", "", ""];
 
 // document.querySelector("p");.addEventListener("click", displayDate);
 
 // querySelectorAll();.addEventListener("click", displayDate);
 
-function onCellClick(event) { 
-    console.log("Cell is Clicked")
-    console.log(event.target)
-    event.target.innerHTML = playersTurn
-}
+// click 1 = onCellCLick = X
+// click 2 = onClickClick = 0
+// click 3 = onCellCLick = X
 
-const listOfCells= document.querySelectorAll(".cell")
-for (let i = 0; i < listOfCells.length; i++) {
-    listOfCells[i].addEventListener("click", onCellClick)
+function onCellClick(event) {
+  // adding the tic or toe to cell
+  event.target.innerHTML = playersTurn;
+
+  // ============
+  // change players
+  if (playersTurn === "X") {
+    playersTurn = "O";
+  } else {
+    playersTurn = "X";
+  }
+  // ============
+  // check game result
+
+  const hasGameFinished = checkForWin(); // return true  game is finished there is a winner /// return false game is not finihed and keep playing
+
+  if (hasGameFinished) {
+    alert(" Player Has Won");
   }
 
-console.log(document.querySelectorAll(".cell"))
+  // ============
+}
+
+const listOfCells = document.querySelectorAll(".cell"); // returns array set each ndoes innner html to null or empty string
+for (let i = 0; i < listOfCells.length; i++) {
+  listOfCells[i].addEventListener("click", onCellClick);
+}
+
+function resetGame() {
+  // reset game with out refreshing page.
+  const listOfCells = document.querySelectorAll(".cell");
+}
+// returns array set each ndoes innner html to null or empty string
+// nedd to loop
 
 const winningTableScores = [
-  [0, 1, 2],
+  [0, 1, 2], //index 0
   [3, 4, 5],
   [6, 7, 8],
   [0, 3, 6],
   [1, 4, 7],
   [2, 5, 8],
   [0, 4, 8],
-  [2, 4, 6]
-]; 
-function gameResult() {
-  let winningRound = false;
-  for (let i = 0; i <= 7; i++) {
-    const winningTableScores = winningTableScores[i]
-    let a = gameSetup[winningTableScores[0]];
-    let b = gameSetup[winningTableScores[1]];
-    let c = gameSetup[winningTableScores[2]];
-    if (a === "" || b === "" || c === "") {
-      continue; 
-    }
-    if (a === b && b === c) {
-      winningRound = true;
-      break
+  [2, 4, 6],
+];
 
+function checkForWin() {
+  const listOfCells = document.querySelectorAll(".cell");
+
+  for (let i = 0; i < winningTableScores.length; i++) {
+    const winningMove = winningTableScores[i]; // [0, 1, 2]
+
+    const cell1 = winningMove[0];
+    const cell2 = winningMove[1];
+    const cell3 = winningMove[2];
+
+    const a = listOfCells[cell1].innerHTML;
+    const b = listOfCells[cell2].innerHTML;
+    const c = listOfCells[cell3].innerHTML;
+
+    const allCellsAreFilled = a && b && c;
+    const isWinningMove = a == b && b == c && a == c;
+
+    if (allCellsAreFilled && isWinningMove) {
+      alert("there is a win" + "Player " + a + " Has Won");
+      resetGame();
     }
   }
-
 }

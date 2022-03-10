@@ -1,43 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
+
 body {
-    background-color: #3d5a80;
-  }
-  
-  header {
-    font-size: 20px;
-    text-align: center;
-    background-color: #4a4e69;
-  }
-  
-  section {
-    text-align: center;
-  }
-  .game--container {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    width: 306px;
-    margin: 180px auto;
-    padding-right: 250px;
-    font-size: 150px;
-  }
-  .cell {
-    background-color: #84a59d;
-    width: 200px;
-    height: 200px;
-    box-shadow: 0 0 0 2px #333333;
-    border: 3px solid #333333;
-    line-height: 100px;
-    cursor: pointer;
-  }
+  background-color: #3d5a80;
+  font-family: "Kanit", sans-serif;
+}
 
-  button {
-    font-size: 25px;
-    position: relative;
-    background-color: #4a4e69;
-    margin-left: 50%;
-  }
+header {
+  font-size: 20px;
+  text-align: center;
+  background-color: #4a4e69;
+}
 
-  footer {
-    font-size: 20px;
-    text-align: center;
-    background-color: #4a4e69;
-  }
+section {
+  text-align: center;
+}
+.game--container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 306px;
+  margin: 180px auto;
+  padding-right: 250px;
+  font-size: 150px;
+}
+.cell {
+  background-color: #84a59d;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 0 0 2px #333333;
+  border: 3px solid #333333;
+  line-height: 100px;
+  cursor: pointer;
+}
+
+button {
+  font-size: 25px;
+  position: relative;
+  background-color: #4a4e69;
+  margin-left: 50%;
+}
+
+footer {
+  font-size: 20px;
+  text-align: center;
+  background-color: #4a4e69;
+}
