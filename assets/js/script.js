@@ -7,7 +7,7 @@
 
 let startedGame = false;
 
-let playersTurn = "X"; 
+let playersTurn = "X";
 
 let gameSetup = ["", "", "", "", "", "", "", "", ""];
 
@@ -20,9 +20,9 @@ function onCellClick(event) {
 
   const cellIndex = event.target.getAttribute("data-cell-index");
 
-/**
- * Player change from X to O on next click
- */
+  /**
+   * Player change from X to O on next click
+   */
   if (playersTurn === "X") {
     playersTurn = "O";
     gameSetup[cellIndex] = "X";
@@ -34,7 +34,7 @@ function onCellClick(event) {
   /**
    * Checks game result to see if win is true and game will reset, if false will keep playing and check for draw
    */
-  const win = checkForWin(); 
+  const win = checkForWin();
   if (win) {
     resetGame();
   } else {
@@ -48,7 +48,7 @@ document.querySelectorAll("button")[0].addEventListener("click", resetGame);
 /**
  * Returns array and listens for clicks, adds player symbol in to cell when clicked
  */
-const listOfCells = document.querySelectorAll(".cell"); 
+const listOfCells = document.querySelectorAll(".cell");
 for (let i = 0; i < listOfCells.length; i++) {
   listOfCells[i].addEventListener("click", onCellClick);
 }
@@ -69,7 +69,7 @@ function resetGame() {
  * Cell combinations that will result in a win
  */
 const winningTableScores = [
-  [0, 1, 2], 
+  [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
   [0, 3, 6],
