@@ -43,7 +43,9 @@ Down the line I would like to expand this project by adding a feature which tall
 * Each winning cell combination has been tested to make sure all are working correctly.
 * The layout has been checked with multiple users to confirm it is easy to read and see the text on multiple screens, media queries were used to help the game fit on smaller screens. 
 * Confirmed the font and colours are accesible on all systems.
-* Confirmed this game is responsive, displays well and functions on different screens. 
+* Confirmed this game is responsive, displays well and functions on different screens through the Lighthouse results shown below.
+
+![Screenshot of game Lighthouse results](assets/images/game-lighthouse-performance.png)
 
 ## Validator Testing
 
